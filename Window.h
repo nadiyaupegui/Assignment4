@@ -10,6 +10,7 @@ public:
     ~Window();
     bool empty() const;
     void occupy(const Student stu);
+    bool timeup();
     void remove();
     unsigned int getIdle() const;
     void increaseIdle();
