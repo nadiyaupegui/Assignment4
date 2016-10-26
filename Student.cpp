@@ -61,6 +61,10 @@ bool Student::operator ==(const Student& other)
     return ((wait == other.wait) && (window == other.window) && (arrival == other.arrival));
 }
 
+bool Student::operator !=(const Student& other)
+{
+    return ((wait != other.wait) || (window != other.window) || (arrival != other.arrival));
+}
 void Student::operator =(const Student& stu)
 {
     wait = stu.wait;
