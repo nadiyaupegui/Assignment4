@@ -127,8 +127,29 @@ void Registrar::increaseIdle() // goes through windows and increases idle time i
 	}
 }
 
-unsigned int getSize() const
+unsigned int Registrar::getSize() const
 {
 	return size;
 }
+
+void Registrar::readFile().
+{
+
+}
+
+void Registrar::run(string)
+{
+	readFile(string);
+	int clock = 0;
+	while(GenQueue.getSize()>0)
+	{
+		occupyWindow();
+		increaseWait();
+		increaseIdle();
+		decreaseWindow();
+		emptyWindow();
+	}
+	//do stats stuff
+}
+
 #endif
