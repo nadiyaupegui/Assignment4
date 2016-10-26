@@ -28,6 +28,13 @@ public:
     void increaseIdle(); //goes through the windows and increments idle time if empty
     unsigned int getSize() const;
     //gets the number of windows open
+    void readFile();
+    //reads the file and uses the information to establish the environment
+    double findMean(DList<int>* l);
+    double findVar(DList<int>* l);
+    double findMax(DList<int>* l);
+    int overTime(DList<int>* l,int time);
+    void run();
 
 private:
     GenQueue<Student>* line; //line 
