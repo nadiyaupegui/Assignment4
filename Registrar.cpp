@@ -13,9 +13,34 @@ using namespace std;
 
 Registrar::Registrar() : open(-1) {}
 
-Registrar::~Registrar(){}
+Registrar::~Registrar(){
+	if(line != NULL){
+		delete line;
+	}
+	if(windows != NULL){
+		delete windows;
+	}
+	if(waitTimes !=NULL){
+		delete waitTimes;
+	}
+	if(windowTimes !=NULL){
+		delete windowTimes;
+	}
+}
 
-void Registrar::increaseWait(){}
+void Registrar::increaseWait(){
+	GenQueue<Student>* templine = new GenQueue<Student>();
+	Student tempStud;
+	while(line.getSize() != 0)
+	{	tempStud = line->peek();
+	 	tempStud.increaseWait();
+		templine->enqueue(tempStud);
+		line->dequeue();
+	}
+	line = templine;
+	templine = NULL;
+	delete templine;
+}
 
 void Registrar::increaseIdle(){}
 
