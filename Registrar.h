@@ -12,7 +12,7 @@ public:
     Registrar();
     ~Registrar();
     void increaseWait();
-    //goes through the line and increases student wait times
+    //goes through the line and increases student wait times if they have arrived
     void decreaseWindow();
     //decreases each student's time at window
     void setWindow(const unsigned int& n);
@@ -23,7 +23,7 @@ public:
     //sends idle times to windowTimes list
     //resets idle times
     void emptyWindow(); //kicks student out of window, put his wait time in the list
-    void increaseIdle(); //goes through the line increments students who have arrived
+    void increaseIdle(); //goes through the windows and increments idle time if empty
     unsigned int getSize() const;
     //gets the number of windows open
 
