@@ -96,11 +96,11 @@ void Registrar::occupyWindow(){
 		if(windows[i].empty())
 		{
 			windows[i].occupy(line->peek())
-			waitTimes.addBack(line->peek()->getWait());
+			waitTimes->addBack(line->peek()->getWait());
 			//add student timew to wait times list
 			line->dequeue();
 			//fills empty windows with students
-			windowTimes.addBack(windows[i].getIdle())
+			windowTimes.addBack(windows[i].getIdle());
 			//adds idletimes to window times list
 			windowTimes.resetIdle();
 		}
