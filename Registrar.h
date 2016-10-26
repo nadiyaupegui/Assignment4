@@ -11,8 +11,10 @@ class Registrar
 public:
     Registrar();
     ~Registrar();
-    void increaseWait();
+    void increaseWait(int c);
+    //takes in a int value for clock ticks
     //goes through the line and increases student wait times if they have arrived
+    //they have arrived if arrival>clock time
     void decreaseWindow();
     //decreases each student's time at window
     void setWindow(const unsigned int& n);
