@@ -31,7 +31,7 @@ Registrar::~Registrar(){
 void Registrar::increaseWait(){
 	GenQueue<Student>* templine = new GenQueue<Student>();
 	Student tempStud;
-	while(line.getSize() != 0)
+	while(line -> getSize() != 0)
 	{	tempStud = line->peek();
 	 	tempStud.increaseWait();
 		templine->enqueue(tempStud);
