@@ -7,7 +7,7 @@
 
 Window::Window():idleTime(0), isEmpty(true){}
 
-Window::~Window(){delete s;}
+Window::~Window(){}
 
 bool Window::empty() const {return isEmpty;}
 
