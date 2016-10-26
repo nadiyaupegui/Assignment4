@@ -96,13 +96,13 @@ void Registrar::occupyWindow(){
 		if(windows[i].empty())
 		{
 			windows[i].occupy(line->peek());
-			waitTimes->addBack(line->peek()->getWait());
+			waitTimes->addBack(line->peek().getWait());
 			//add student timew to wait times list
 			line->dequeue();
 			//fills empty windows with students
-			windowTimes.addBack(windows[i].getIdle());
+			windowTimes->addBack(windows[i].getIdle());
 			//adds idletimes to window times list
-			windowTimes.resetIdle();
+			windows[i].resetIdle();
 		}
 	}
 }
@@ -110,9 +110,9 @@ void Registrar::occupyWindow(){
 void Registrar::emptyWindow(){//need to add code!!!
 	for(int i=0; i < size; ++i) //goes through every window
 	{
-		if(windows[i].timeup)//if student is out of window time
+		if(windows[i].timeup())//if student is out of window time
 		{
-			window[i].remove();
+			windows[i].remove();
 
 		}
 	}
@@ -132,14 +132,14 @@ unsigned int Registrar::getSize() const
 	return size;
 }
 
-void Registrar::readFile().
+void Registrar::readFile(std::string str)
 {
 
 }
 
-void Registrar::run(string)
+void Registrar::run(std::string str)
 {
-	readFile(string);
+	readFile(str);
 	int clock = 0;
 	while(GenQueue.getSize()>0)
 	{
