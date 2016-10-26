@@ -56,7 +56,17 @@ void Registrar::increaseIdle() // goes through windows and increases idle time i
 		}
 	}
 }
-
+void Registrar::decreaseWindow()
+//goes through the window array and decreases everyone's window time
+{
+	for(int	i = 0; i < size; ++i)//goes through the window array
+	{
+		if(!windows[i].empty())//if the window isn't empty
+		{
+			windows[i].decrementWindow();//decrease the time of the student at window
+		}
+	}
+}
 void Registrar::setWindow(const unsigned int& n)
 {
     if(n <= 0)
