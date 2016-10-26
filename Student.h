@@ -16,6 +16,7 @@ public:
     unsigned int getWindow() const;    
     unsigned int getArrival() const;
     bool operator ==(const Student& other);
+    bool operator !=(const Student& other);
     void operator =(const Student& stu);
 
 private:
