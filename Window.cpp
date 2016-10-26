@@ -20,7 +20,17 @@ void Window::occupy(const Student stu)
     s = stu;
     isEmpty = false;
 }
-
+bool Window::timeup()
+{
+    if(s.getWindow == 0)
+    {
+        return true
+    }
+    else 
+    {
+        return false
+    }
+}
 void Window::remove()
 {
     s.setWait(0);
