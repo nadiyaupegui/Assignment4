@@ -28,7 +28,8 @@ Registrar::~Registrar(){
 	}
 }
 
-void Registrar::increaseWait(int c){//goes through the line, increments everyones wait time
+void Registrar::increaseWait(int c)//goes through the line, increments everyones wait time
+{
 	GenQueue<Student>* templine = new GenQueue<Student>();
 	Student tempStud;
 	while(line -> getSize() != 0)
@@ -48,14 +49,6 @@ void Registrar::increaseWait(int c){//goes through the line, increments everyone
 	delete templine;
 }
 
-void Registrar::increaseIdle() // goes through windows and increases idle time if empty
-{
-	for(int i = 0; i<size; ++i){
-		if(windows[i].empty()){
-			windows[i].increaseIdle();
-		}
-	}
-}
 void Registrar::decreaseWindow()
 //goes through the window array and decreases everyone's window time
 {
@@ -67,6 +60,7 @@ void Registrar::decreaseWindow()
 		}
 	}
 }
+
 void Registrar::setWindow(const unsigned int& n)
 {
     if(n <= 0)
@@ -95,6 +89,7 @@ bool Registrar::openWindow()
     return false;
 }
 
+
 void Registrar::occupyWindow(){
 	for(int i = 0; i < size; ++i)
 	{
@@ -103,7 +98,7 @@ void Registrar::occupyWindow(){
 			windows[i].occupy(line->peek())
 			waitTimes.addBack(line->peek()->getWait());
 			//add student timew to wait times list
-			line->dequeue;
+			line->dequeue();
 			//fills empty windows with students
 			windowTimes.addBack(windows[i].getIdle())
 			//adds idletimes to window times list
@@ -123,4 +118,17 @@ void Registrar::emptyWindow(){//need to add code!!!
 	}
 }
 
+void Registrar::increaseIdle() // goes through windows and increases idle time if empty
+{
+	for(int i = 0; i<size; ++i){
+		if(windows[i].empty()){
+			windows[i].increaseIdle();
+		}
+	}
+}
+
+unsigned int getSize() const
+{
+	return size;
+}
 #endif
