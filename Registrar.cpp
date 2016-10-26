@@ -133,6 +133,7 @@ unsigned int Registrar::getSize() const
 }
 
 void Registrar::readFile(std::string str)
+
 {
 
 }

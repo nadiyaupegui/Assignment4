@@ -22,17 +22,17 @@ void Window::occupy(const Student stu)
 }
 bool Window::timeup()
 {
-    if(s.getWindow == 0)
+    if(s.getWindow() == 0)
     {
-        return true
+        return true;
     }
     else 
     {
-        return false
+        return false;
     }
 }
 
-bool Window::decrementWindow()
+void Window::decrementWindow()
 {
     s.decreaseWindow();
 }
