@@ -11,7 +11,7 @@
 #include <cstddef>
 using namespace std;
 
-Registrar::Registrar() : open(-1) {}
+Registrar::Registrar() : size(-1) {}
 
 Registrar::~Registrar(){
 	if(line != NULL){
@@ -53,18 +53,18 @@ void Registrar::setWindow(const unsigned int& n)
     }
 
     windows = new Window[n];
-    open = n;
+    size = n;
 }
 
 bool Registrar::openWindow()
 {
-    if(open <= 0)
+    if(size <= 0)
     {
 	cout << "Error Registrar::openWindow(). No windows set." << endl;
 	exit(1);
     }
 
-    for (int i = 0; i < open; ++i)
+    for (int i = 0; i < size; ++i)
     {
 	if (windows[i].empty())
 	    return true;
