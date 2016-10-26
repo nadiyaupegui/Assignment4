@@ -31,6 +31,12 @@ bool Window::timeup()
         return false
     }
 }
+
+bool Window::decrementWindow()
+{
+    s.decreaseWindow();
+}
+
 void Window::remove()
 {
     s.setWait(0);
