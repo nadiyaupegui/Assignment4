@@ -141,10 +141,10 @@ void Registrar::run(std::string str)
 {
 	readFile(str);
 	int clock = 0;
-	while(line.getSize()>0)
+	while(line->getSize()>0)
 	{
 		occupyWindow();
-		increaseWait();
+		increaseWait(clock);
 		increaseIdle();
 		decreaseWindow();
 		emptyWindow();
