@@ -95,7 +95,7 @@ void Registrar::occupyWindow(){
 	{
 		if(windows[i].empty())
 		{
-			windows[i].occupy(line->peek())
+			windows[i].occupy(line->peek());
 			waitTimes->addBack(line->peek()->getWait());
 			//add student timew to wait times list
 			line->dequeue();
