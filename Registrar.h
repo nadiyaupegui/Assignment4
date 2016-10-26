@@ -12,20 +12,27 @@ public:
     Registrar();
     ~Registrar();
     void increaseWait();
-    void decreaseWindow();    
+    //goes through the line and increases student wait times
+    void decreaseWindow();
+    //decreases each student's time at window
     void setWindow(const unsigned int& n);
-    bool openWindow();
+    //set the size of the windows array
+    bool openWindow(); //tells if there is one open window
     void occupyWindow();
-    void emptyWindow();
-    void increaseIdle();
+    //fills all empty windows with students
+    //sends idle times to windowTimes list
+    //resets idle times
+    void emptyWindow(); //kicks student out of window, put his wait time in the list
+    void increaseIdle(); //goes through the line increments students who have arrived
     unsigned int getSize() const;
+    //gets the number of windows open
 
 private:
-    GenQueue<Student*>* line;
-    Window* windows;
+    GenQueue<Student>* line; //line 
+    Window* windows;//array of windows available for students
     unsigned int size;
-    DList<int>* waitTimes;
-    DList<int>* windowTimes;
+    DList<int>* waitTimes; //wait times size of # of students/queue.size
+    DList<int>* windowTimes; //idle times for windows
 };
 
 #endif //REGISTRAR_H
