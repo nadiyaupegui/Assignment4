@@ -28,13 +28,17 @@ Registrar::~Registrar(){
 	}
 }
 
-void Registrar::increaseWait(){//goes through the line, increments everyones wait time
+void Registrar::increaseWait(int c){//goes through the line, increments everyones wait time
 	GenQueue<Student>* templine = new GenQueue<Student>();
 	Student tempStud;
 	while(line -> getSize() != 0)
 	{	
 		tempStud = line->peek();
-	 	tempStud.increaseWait();
+		if(tempStud.getArrival()>c)
+		//if the arrival time is after the clock time
+		{
+			tempStud.increaseWait();
+		}
 		templine->enqueue(tempStud);
 		line->dequeue();
 	}
@@ -101,8 +105,11 @@ void Registrar::occupyWindow(){
 void Registrar::emptyWindow(){//need to add code!!!
 	for(int i=0; i < size; ++i) //goes through every window
 	{
-		if(windows[i])//if student is out of window time
+		if(windows[i].timeup)//if student is out of window time
+		{
 			window[i].remove();
+
+		}
 	}
 }
 
