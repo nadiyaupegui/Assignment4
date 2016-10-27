@@ -151,6 +151,9 @@ void Registrar::run(std::string str)
 		emptyWindow();
 	}
 	//do stats stuff
+	StatStuff lineStats(waitTimes);
+	StatStuff windowStats(windowTimes);
+	
 }
 
 #endif
