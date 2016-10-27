@@ -1,3 +1,6 @@
+$ifndef _STAT_STUFF
+#define _StAT_STUFF
+$include "DList.h"
 class StatStuff{
 private:
   int* data;
@@ -28,3 +31,4 @@ public:
   double calcMax();
   int countOverVal(int val);
 }
+#endif
