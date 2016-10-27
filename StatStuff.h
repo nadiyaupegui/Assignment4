@@ -1,6 +1,6 @@
 class StatStuff{
 private:
-  GenQueue<int>* data;
+  DList<int>* data;
   double mean;
   double median;
   double var;
@@ -10,7 +10,7 @@ private:
 
 public:
   StatStuff();
-  StatStuff(GenQueue<int>* d);
+  StatStuff(DList<int>* d);
   ~StatStuff();
   double SetData();
   double getMean();
