@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cstdlib>
+#include <string>
 #include "DNode.h"
 #include "DList.h"
 #include "GenQueue.h"
@@ -10,5 +11,8 @@ using namespace std;
 
 int main(int argc, char** argv)
 {
-  str
+  string fileIn =  argv[1];
+  Registrar r();
+  
+  r.run(fileIn);
 }
