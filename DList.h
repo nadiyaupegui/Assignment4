@@ -100,14 +100,18 @@ void DList<T>::addFront(const T& d)
 template <class T>
 void DList<T>::addBack(const T& d)
 {
+
+    cout << "Tries DNode" << endl;
     DNode<T>* node = new DNode<T>(d);
+    cout << "Successful DNode" << endl;
     if (empty())
     {
-        head = node;
+	head = node;
     }
     else
     {
 	tail -> next = node;
+	
 	node -> prev = tail;
     }	
     tail = node;

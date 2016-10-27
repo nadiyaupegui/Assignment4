@@ -22,6 +22,10 @@ template <class T>
 DNode<T>::DNode(const T& d) : data(d), prev (NULL), next(NULL){}
 
 template <class T>
-DNode<T>::~DNode(){}
+DNode<T>::~DNode()
+{
+    delete prev;
+    delete next;
+}
 
 #endif //DNODE_H

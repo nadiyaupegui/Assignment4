@@ -38,7 +38,12 @@ GenQueue<T>::~GenQueue()
 }
 
 template <class T>
-void GenQueue<T>::enqueue(const T& d) {list -> addBack(d);}
+void GenQueue<T>::enqueue(const T& d) 
+{
+    cout << "Tries addback" << endl;
+    list -> addBack(d);
+    cout << "adds back" << endl;
+}
 
 template <class T>
 void GenQueue<T>::dequeue(){list -> removeFront();}

@@ -160,7 +160,9 @@ void Registrar::readFile(std::string str)
 	
 	int n;
 	inStream >> n;
+	cout << "Tries window." << endl;
 	setWindow(n);
+	cout << "Sets window." << endl;
 	
 	int time, count, wTime;
 	
@@ -171,8 +173,13 @@ void Registrar::readFile(std::string str)
 		for (int i = 0; i < count; ++i)
 		{
 			inStream >> wTime;
-			Student temp(0, wTime, time);
-			line->enqueue(temp);	
+			cout << "tries student." << endl;
+			Student* temp = new Student(0, wTime, time);
+			cout << "Made student." << endl;
+			line->enqueue(*temp);
+			cout << "eng" << endl;
+			temp = NULL;
+			delete temp;
 		}
 	}
 	inStream.close();
@@ -181,9 +188,11 @@ void Registrar::readFile(std::string str)
 void Registrar::run(std::string str)
 {
 	readFile(str);
+	
 	int clock = 0;
 	while(line->getSize() > 0 || !allOpen())
 	{
+
 		occupyWindow();
 		increaseWait(clock);
 		increaseIdle();
@@ -191,6 +200,7 @@ void Registrar::run(std::string str)
 		emptyWindow();
 	}
 	//do stats stuff
+
 	StatStuff lineStats(waitTimes);
 	StatStuff windowStats(windowTimes);
 	cout<<"Average Student Wait:\t"<<lineStats.calcMean()<<endl;
