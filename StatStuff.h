@@ -1,6 +1,6 @@
 class StatStuff{
 private:
-  DList<int>* data;
+  int* data;
   double mean;
   double median;
   double var;
