@@ -12,7 +12,7 @@ using namespace std;
 int main(int argc, char** argv)
 {
   string fileIn =  argv[1];
-  Registrar r();
+  Registrar r;
   
   r.run(fileIn);
 }
