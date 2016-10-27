@@ -20,6 +20,7 @@ public:
     void setWindow(const unsigned int& n);
     //set the size of the windows array
     bool openWindow(); //tells if there is one open window
+    bool allOpen(); //checks to see if all windows are open.
     void occupyWindow();
     //fills all empty windows with students
     //sends idle times to windowTimes list
