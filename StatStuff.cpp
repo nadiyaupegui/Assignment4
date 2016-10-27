@@ -16,7 +16,6 @@ StatStuff::StatStuff(DList<int>* d)
   data = new int[size];
   while(d->getSize() != 0)
   {
-    sum += data->front();
     temp->addFront(data->front());
     data->removeFront();
   }
@@ -42,13 +41,12 @@ void StatStuff::sortData()
   std::sort(data, data+size);
 }
 
-void StatStuff::setData()
+void StatStuff::setData(DList<int>* d)
 {
   size = d->GetSize();
   data = new int[size];
   while(d->getSize() != 0)
   {
-    sum += data->front();
     temp->addFront(data->front());
     data->removeFront();
   }
