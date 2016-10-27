@@ -162,7 +162,7 @@ void Registrar::readFile(std::string str)
 		{
 			inStream >> wTime;
 			Student temp(0, wTime, time);
-			line.enqueue(temp);	
+			line->enqueue(temp);	
 		}
 	}
 	inStream.close();
@@ -186,9 +186,9 @@ void Registrar::run(std::string str)
 	cout<<"Average Student Wait:\t"<<lineStats.calcMean()<<endl;
 	cout<<"Median Student Wait:\t:"<<lineStats.calcMedian()<<endl;
 	cout<<"Longest Student Wait:\t:"<<lineStats.calcMax()<<endl;
-	cout<<"Number of Students Waiting over 10 min:\t"<<lineStats.calcOverVal(10)<<endl;
+	cout<<"Number of Students Waiting over 10 min:\t"<<lineStats.countOverVal(10)<<endl;
 	cout<<"Mean Window Idle Time:\t"<<windowStats.calcMean()<<endl;
 	cout<<"Longest Window idle time:\t"<<windowStats.calcMax()<<endl;
-	cout<<"Number of Windows idle for over 5 min:\t"<<windowStats.calcOverVal(5)<<endl;
+	cout<<"Number of Windows idle for over 5 min:\t"<<windowStats.countOverVal(5)<<endl;
 }
 #endif
