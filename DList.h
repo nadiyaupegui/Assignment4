@@ -101,9 +101,7 @@ template <class T>
 void DList<T>::addBack(const T& d)
 {
 
-    cout << "Tries DNode" << endl;
     DNode<T>* node = new DNode<T>(d);
-    cout << "Successful DNode" << endl;
     if (empty())
     {
 	head = node;

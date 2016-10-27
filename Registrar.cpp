@@ -15,7 +15,12 @@
 
 using namespace std;
 
-Registrar::Registrar() : size(-1) {}
+Registrar::Registrar() : size(-1) 
+{
+    line = new GenQueue<Student>();
+    waitTimes = new DList<int>();
+    windowTimes = new DList<int>();
+}
 
 Registrar::~Registrar(){
 	if(line != NULL){
@@ -160,9 +165,7 @@ void Registrar::readFile(std::string str)
 	
 	int n;
 	inStream >> n;
-	cout << "Tries window." << endl;
 	setWindow(n);
-	cout << "Sets window." << endl;
 	
 	int time, count, wTime;
 	
@@ -173,11 +176,8 @@ void Registrar::readFile(std::string str)
 		for (int i = 0; i < count; ++i)
 		{
 			inStream >> wTime;
-			cout << "tries student." << endl;
 			Student* temp = new Student(0, wTime, time);
-			cout << "Made student." << endl;
 			line->enqueue(*temp);
-			cout << "eng" << endl;
 			temp = NULL;
 			delete temp;
 		}
