@@ -1,4 +1,5 @@
-#include "StatStuff.cpp"
+#include "StatStuff.h"
+#include "DList.h"
 #include <algorithm>
 using namespace std;
 StatStuff::StatStuff()
