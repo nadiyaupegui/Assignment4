@@ -7,11 +7,20 @@ StatStuff::StatStuff()
   min = -1;
   max = -1;
   overVal = -1;
+  size = -1;
 }
 
 StatStuff::StatStuff(DList<int>* d)
 {
-  data = d;
+  size = d->GetSize();
+  data = new int[size];
+  while(d->getSize() != 0)
+  {
+    sum += data->front();
+    temp->addFront(data->front());
+    data->removeFront();
+  }
+  sortData();
   mean = -1;
   median = -1;
   var = -1;
@@ -26,6 +35,11 @@ StatStuff::~StatStuff()
   {
     delete data;
   }
+}
+
+void StatStuff::sortData()
+{
+  std::sort(data, data+size);
 }
 
 double StatStuff::getMean()
@@ -58,19 +72,64 @@ int StatStuff::getOverVal()
   return overval;
 }
 
-void StatStuff::calcMean()
+double StatStuff::calcMean()
 {
+  int sum = 0;
+  for(int i = 0; i<size; ++i)
+  {
+    sum+=data[i]
+  }
+  mean = sum/size;
+  return mean;
 }
 
-void StatStuff::calcMedian()
+double StatStuff::calcMedian()
 {
-
+  int idx = 0;
+  idx = (int)(size/2)
+  if(size%2 == 1)
+  //if it's odd
+  {
+    median = data[idx]
+  }
+  else
+  {
+    median = (data[idx]+data[idx+1])/2
+  }
+  return median
 }
 
-void StatStuff::calcVar(){}
+double StatStuff::calcVar()
+{
+  double squaresum = 0;
+  for(int = 0; i<size; ++i)
+  {
+    squaresum += (data[i]-mean)*{data[i]-mean);
+  }
+    var = squaresum/(size-1);
+    return var;
+ }
 
-void StatStuff::calcMin(){}
+double StatStuff::calcMin(){
+  min = data[0];
+  return min;
+}
 
-void StatStuff::calcMax(){}
+double StatStuff::calcMax()
+{
+  max = data[size-1];
+  return max;
+}
 
-void StatStuff::calcOverVal(){}
+int StatStuff::calcOverVal(int val){
+  int count = 0;
+  for(int i = 0; i<size;++i)
+  {
+    if(data[i]>val)
+    {
+      count++;
+    }
+  }
+  overVal = count;
+  return overVal;
+}
