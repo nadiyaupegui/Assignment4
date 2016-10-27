@@ -9,6 +9,9 @@
 #include <iostream>
 #include <cstdlib>
 #include <cstddef>
+#include <fstream>
+#include <algorithm>
+
 using namespace std;
 
 Registrar::Registrar() : size(-1) {}
