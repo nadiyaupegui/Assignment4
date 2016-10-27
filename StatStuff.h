@@ -1,6 +1,6 @@
-$ifndef _STAT_STUFF
+#ifndef _STAT_STUFF
 #define _StAT_STUFF
-$include "DList.h"
+#include "DList.h"
 class StatStuff{
 private:
   int* data;
@@ -30,5 +30,5 @@ public:
   double calcMin();
   double calcMax();
   int countOverVal(int val);
-}
+};
 #endif

@@ -16,12 +16,12 @@ StatStuff::StatStuff()
 
 StatStuff::StatStuff(DList<int>* d)
 {
-  size = d->GetSize();
+  size = d->getSize();
   data = new int[size];
-  while(d->getSize() != 0)
+  for(int i = 0; i<size;++i)
   {
-    temp->addFront(data->front());
-    data->removeFront();
+    data[i]= d->front();
+    d->removeFront();
   }
   sortData();
   mean = -1;
@@ -47,13 +47,13 @@ void StatStuff::sortData()
 
 void StatStuff::setData(DList<int>* d)
 {
-  size = d->GetSize();
+  size = d->getSize();
   data = new int[size];
-  while(d->getSize() != 0)
+  for(int i = 0; i<size;++i)
   {
-    temp->addFront(data->front());
-    data->removeFront();
-  }
+    data[i]= d->front();
+    d->removeFront();
+  } 
   sortData();
 }
 
@@ -84,7 +84,7 @@ double StatStuff::getMax()
 
 int StatStuff::getOverVal()
 {
-  return overval;
+  return overVal;
 }
 
 double StatStuff::calcMean()
@@ -92,7 +92,7 @@ double StatStuff::calcMean()
   int sum = 0;
   for(int i = 0; i<size; ++i)
   {
-    sum+=data[i]
+    sum+=data[i];
   }
   mean = sum/size;
   return mean;
@@ -101,25 +101,24 @@ double StatStuff::calcMean()
 double StatStuff::calcMedian()
 {
   int idx = 0;
-  idx = (int)(size/2)
-  if(size%2 == 1)
-  //if it's odd
+  idx = (int)(size/2);
+  if(size%2 == 1) //if it's odd
   {
-    median = data[idx]
+    median = data[idx];
   }
   else
   {
-    median = (data[idx]+data[idx+1])/2
+    median = (data[idx]+data[idx+1])/2;
   }
-  return median
+  return median;
 }
 
 double StatStuff::calcVar()
 {
   double squaresum = 0;
-  for(int = 0; i<size; ++i)
+  for(int i = 0; i<size; ++i)
   {
-    squaresum += (data[i]-mean)*{data[i]-mean);
+    squaresum += (data[i]-mean)*(data[i]-mean);
   }
     var = squaresum/(size-1);
     return var;
@@ -136,7 +135,7 @@ double StatStuff::calcMax()
   return max;
 }
 
-int StatStuff::calcOverVal(int val){
+int StatStuff::countOverVal(int val){
   int count = 0;
   for(int i = 0; i<size;++i)
   {
