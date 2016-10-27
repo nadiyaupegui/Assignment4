@@ -1,3 +1,6 @@
+#include "StatStuff.cpp"
+#include <algorithm>
+using namespace std;
 StatStuff::StatStuff()
 {
   data = NULL;
