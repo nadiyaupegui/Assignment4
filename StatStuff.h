@@ -7,7 +7,8 @@ private:
   double min;
   double max;
   int overVal;
-
+  int size;
+  
 public:
   StatStuff();
   StatStuff(DList<int>* d);
