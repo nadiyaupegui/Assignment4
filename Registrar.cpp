@@ -138,7 +138,34 @@ unsigned int Registrar::getSize() const
 
 void Registrar::readFile(std::string str)
 {
+	ifstream inStream;
+	inStream.open(str.c_str());
 	
+	if (inStream.fail())
+	{
+		cout << "Error opening file." << endl;
+		inStream.close();
+		exit(1);
+	}
+	
+	int n;
+	inStream >> n;
+	setWindow(n);
+	
+	int time, count, wTime;
+	
+	while (!inStream.eof())
+	{
+		inStream >> time;
+		inStream >> count;
+		for (int i = 0; i < count; ++i)
+		{
+			inStream >> wTime;
+			Student temp(0, wTime, time);
+			line.enqueue(temp);	
+		}
+	}
+	inStream.close();
 }
 
 void Registrar::run(std::string str)
