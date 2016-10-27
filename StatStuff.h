@@ -13,17 +13,18 @@ public:
   StatStuff();
   StatStuff(DList<int>* d);
   ~StatStuff();
-  double SetData();
+  void sortData();
+  void setData(DList<int>* d);
   double getMean();
   double getMedian();
   double getVar();
   double getMin();
   double getMax();
   int getOverVal();
-  void calcMean();
-  void calcMedian();
-  void calcVar();
-  void calcMin();
-  void calcMax();
-  void countOverVal(int val);
+  double calcMean();
+  double calcMedian();
+  double calcVar();
+  double calcMin();
+  double calcMax();
+  int countOverVal(int val);
 }
