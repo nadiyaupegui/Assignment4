@@ -6,6 +6,7 @@
 #include "DList.h"
 #include "DNode.h"
 #include "Window.h"
+#include "StatStuff.h"
 #include <iostream>
 #include <cstdlib>
 #include <cstddef>
