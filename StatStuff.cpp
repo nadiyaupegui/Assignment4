@@ -1,15 +1,23 @@
 StatStuff::StatStuff()
 {
   data = NULL;
+  mean = -1;
+  median = -1;
+  var = -1;
+  min = -1;
+  max = -1;
+  overVal = -1;
 }
 
-StatStuff::StatStuff(GenQueue<int>* d)
+StatStuff::StatStuff(DList<int>* d)
 {
-  mean = -1
-  median = -1
-  var = -1
-  min = -1
-  max = -1
+  data = d;
+  mean = -1;
+  median = -1;
+  var = -1;
+  min = -1;
+  max = -1;
+  overVal = -1;
 }
 
 StatStuff::~StatStuff()
@@ -52,10 +60,12 @@ int StatStuff::getOverVal()
 
 void StatStuff::calcMean()
 {
-
 }
 
-void StatStuff::calcMedian(){}
+void StatStuff::calcMedian()
+{
+
+}
 
 void StatStuff::calcVar(){}
 
