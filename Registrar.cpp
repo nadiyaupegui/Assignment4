@@ -93,6 +93,16 @@ bool Registrar::openWindow()
     return false;
 }
 
+bool Registrar::allOpen()
+{
+	for (int i = 0; i < size; ++i)
+	{
+		if (!windows[i].empty())
+			return false;
+	}
+	
+	return true;
+}
 
 void Registrar::occupyWindow(){
 	for(int i = 0; i < size; ++i)
@@ -172,7 +182,7 @@ void Registrar::run(std::string str)
 {
 	readFile(str);
 	int clock = 0;
-	while(line->getSize()>0)
+	while(line->getSize() > 0 || !allOpen())
 	{
 		occupyWindow();
 		increaseWait(clock);
