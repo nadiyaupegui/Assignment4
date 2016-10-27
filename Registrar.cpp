@@ -151,7 +151,13 @@ void Registrar::run(std::string str)
 	}
 	//do stats stuff
 	StatStuff lineStats(waitTimes);
-	StatStuff windowStats(windowTimes);	
+	StatStuff windowStats(windowTimes);
+	cout<<"Average Student Wait:\t"<<lineStats.calcMean()<<endl;
+	cout<<"Median Student Wait:\t:"<<lineStats.calcMedian()<<endl;
+	cout<<"Longest Student Wait:\t:"<<lineStats.calcMax()<<endl;
+	cout<<"Number of Students Waiting over 10 min:\t"<<lineStats.calcOverVal(10)<<endl;
+	cout<<"Mean Window Idle Time:\t"<<windowStats.calcMean()<<endl;
+	cout<<"Longest Window idle time:\t"<<windowStats.calcMax()<<endl;
+	cout<<"Number of Windows idle for over 5 min:\t"<<windowStats.calcOverVal(5)<<endl;
 }
-
 #endif
