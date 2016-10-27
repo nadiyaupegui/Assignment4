@@ -133,9 +133,8 @@ unsigned int Registrar::getSize() const
 }
 
 void Registrar::readFile(std::string str)
-
 {
-
+	
 }
 
 void Registrar::run(std::string str)
@@ -152,8 +151,7 @@ void Registrar::run(std::string str)
 	}
 	//do stats stuff
 	StatStuff lineStats(waitTimes);
-	StatStuff windowStats(windowTimes);
-	
+	StatStuff windowStats(windowTimes);	
 }
 
 #endif
