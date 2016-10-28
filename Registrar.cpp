@@ -27,11 +27,11 @@ Registrar::~Registrar(){
 	if(line != NULL){
 		delete line;
 	}
-/*
+
 	if(windows != NULL){
-		delete windows;
+		[]delete windows;
 	}
-*/
+
 	if(waitTimes !=NULL){
 		delete waitTimes;
 	}
