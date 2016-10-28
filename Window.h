@@ -8,8 +8,7 @@ class Window
 public:
     Window();
     ~Window();
-    bool empty() const; //rns true if s is empty
-    
+    bool empty() const; //Returns true if s is empty
     void occupy(const Student stu); //Sets student member variable
     bool timeup(); //tells if the student's time is up
     void decrementWindow(); //decrements student window time
