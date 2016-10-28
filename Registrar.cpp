@@ -112,7 +112,7 @@ bool Registrar::allOpen()
 void Registrar::occupyWindow(int c){
 	for(int i = 0; i < size; ++i)
 	{
-		if((windows[i].empty()) && (line -> getSize() != 0) && (line -> peek().getWait() >= c))
+		if((windows[i].empty()) && (line -> getSize() != 0) && (line -> peek().getArrival() <= c))
 		{
 			windows[i].occupy(line -> peek());
 			waitTimes -> addBack(line->peek().getWait());
