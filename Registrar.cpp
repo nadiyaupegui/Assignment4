@@ -43,14 +43,16 @@ void Registrar::increaseWait(int c)//goes through the line, increments everyones
 	Student tempStud;
 	while(line -> getSize() != 0)
 	{	
-		tempStud = line->peek();
-		if(tempStud.getArrival()>c)
+		tempStud = line -> peek();
+		if(tempStud.getArrival() > c)
 		//if the arrival time is after the clock time
 		{
+			cout << tempStud.getWait() << endl;
 			tempStud.increaseWait();
+			cout << tempStud.getWait() << endl;
 		}
-		templine->enqueue(tempStud);
-		line->dequeue();
+		templine -> enqueue(tempStud);
+		line -> dequeue();
 	}
 	line = templine;
 	//switch pointers
@@ -109,17 +111,18 @@ bool Registrar::allOpen()
 	return true;
 }
 
-void Registrar::occupyWindow(){
+void Registrar::occupyWindow(int c){
 	for(int i = 0; i < size; ++i)
 	{
-		if(windows[i].empty()&& line -> getSize() != 0)
+		if((windows[i].empty()) && (line -> getSize() != 0) && (line -> peek().getWait() >= c))
 		{
 			windows[i].occupy(line -> peek());
-			waitTimes->addBack(line->peek().getWait());
+			waitTimes -> addBack(line->peek().getWait());
 			//add student timew to wait times list
 			line->dequeue();
 			//fills empty windows with students
-			windowTimes->addBack(windows[i].getIdle());
+			
+			windowTimes -> addBack(windows[i].getIdle());	
 			//adds idletimes to window times list
 			windows[i].resetIdle();
 		}
@@ -128,7 +131,7 @@ void Registrar::occupyWindow(){
 }
 
 void Registrar::emptyWindow(){//need to add code!!!
-	for(int i=0; i < size; ++i) //goes through every window
+	for(int i =  0;  i < size; ++i) //goes through every window
 	{
 		if(windows[i].timeup())//if student is out of window time
 		{
@@ -179,7 +182,6 @@ void Registrar::readFile(std::string str)
 			inStream >> wTime;
 			Student temp(0, wTime, time);
 			line->enqueue(temp);
-			cout << line -> getSize();
 		}
 	}
 	inStream.close();
@@ -188,16 +190,17 @@ void Registrar::readFile(std::string str)
 void Registrar::run(std::string str)
 {
 	readFile(str);
-	
 	int clock = 0;
 	while(line -> getSize() > 0 || !allOpen())
 	{
-		occupyWindow();
+		occupyWindow(clock);
 		increaseWait(clock);
 		increaseIdle();
 		decreaseWindow();
 		emptyWindow();
+		clock++;
 	}
+
 	//do stats stuff
 	
 	StatStuff lineStats(waitTimes);

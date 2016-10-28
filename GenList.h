@@ -3,8 +3,8 @@ class GenList
 {
 public:
     virtual bool empty() const = 0;
-    virtual const T& front() const = 0;
-    virtual const T& back() const = 0;
+    virtual const T front() const = 0;
+    virtual const T back() const = 0;
     virtual void addFront(const T& d) = 0;
     virtual void addBack(const T& d) = 0;
     virtual void removeFront() = 0;

@@ -11,30 +11,36 @@ class Registrar
 public:
     Registrar();
     ~Registrar();
+
     void increaseWait(int c);
     //takes in a int value for clock ticks
     //goes through the line and increases student wait times if they have arrived
     //they have arrived if arrival>clock time
+
     void decreaseWindow();
     //decreases each student's time at window
+
     void setWindow(const unsigned int& n);
     //set the size of the windows array
+
     bool openWindow(); //tells if there is one open window
+
     bool allOpen(); //checks to see if all windows are open.
-    void occupyWindow();
+
+    void occupyWindow(int c);
     //fills all empty windows with students
     //sends idle times to windowTimes list
     //resets idle times
+
     void emptyWindow(); //kicks student out of window, put his wait time in the list
+
     void increaseIdle(); //goes through the windows and increments idle time if empty
+
     unsigned int getSize() const;
     //gets the number of windows open
+
     void readFile(std::string str);
     //reads the file and uses the information to establish the environment
-    double findMean(DList<int>* l);
-    double findVar(DList<int>* l);
-    double findMax(DList<int>* l);
-    int overTime(DList<int>* l,int time);
     void run(std::string str);
 
 private:

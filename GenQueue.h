@@ -16,7 +16,7 @@ public:
     ~GenQueue();
     void enqueue(const T& d);
     void dequeue();
-    const T& peek() const;
+    const T peek() const;
     unsigned int getSize() const;
 
 private:
@@ -49,7 +49,7 @@ void GenQueue<T>::dequeue()
 }
 
 template <class T>
-const T& GenQueue<T>::peek() const{return list -> front();}
+const T GenQueue<T>::peek() const{return list -> front();}
 
 template <class T>
 unsigned int GenQueue<T>::getSize() const{return list -> getSize();}

@@ -16,8 +16,8 @@ public:
     DList();
     ~DList();
     bool empty() const;
-    const T& front() const;
-    const T& back() const;
+    const T front() const;
+    const T back() const;
     void addFront(const T& d);
     void addBack(const T& d);
     void removeFront();
@@ -59,7 +59,7 @@ template <class T>
 bool DList<T>::empty() const {return size == 0;}
 
 template <class T>
-const T& DList<T>::front() const 
+const T DList<T>::front() const 
 {
     if (empty())
     {
@@ -70,7 +70,7 @@ const T& DList<T>::front() const
 }
 
 template <class T>
-const T& DList<T>::back() const
+const T DList<T>::back() const
 {
     if(empty())
     {

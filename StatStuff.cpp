@@ -49,10 +49,10 @@ void StatStuff::setData(DList<int>* d)
 {
   size = d -> getSize();
   data = new int[size];
-  for(int i = 0; i<size;++i)
+  for(int i = 0; i < size;++i)
   {
-    data[i]= d->front(); 
-    d->removeFront();
+    data[i]= d-> front(); 
+    d -> removeFront();
   } 
   sortData();
 }
@@ -68,11 +68,6 @@ double StatStuff::getMedian()
 }
 
 double StatStuff::getVar()
-{
-  return var;
-}
-
-double StatStuff::getMin()
 {
   return min;
 }
