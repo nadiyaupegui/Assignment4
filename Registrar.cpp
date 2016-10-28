@@ -112,9 +112,9 @@ bool Registrar::allOpen()
 void Registrar::occupyWindow(){
 	for(int i = 0; i < size; ++i)
 	{
-		if(windows[i].empty())
+		if(windows[i].empty()&& line -> getSize() != 0)
 		{
-			windows[i].occupy(line->peek());
+			windows[i].occupy(line -> peek());
 			waitTimes->addBack(line->peek().getWait());
 			//add student timew to wait times list
 			line->dequeue();
@@ -124,6 +124,7 @@ void Registrar::occupyWindow(){
 			windows[i].resetIdle();
 		}
 	}
+
 }
 
 void Registrar::emptyWindow(){//need to add code!!!
@@ -176,10 +177,9 @@ void Registrar::readFile(std::string str)
 		for (int i = 0; i < count; ++i)
 		{
 			inStream >> wTime;
-			Student* temp = new Student(0, wTime, time);
-			line->enqueue(*temp);
-			temp = NULL;
-			delete temp;
+			Student temp(0, wTime, time);
+			line->enqueue(temp);
+			cout << line -> getSize();
 		}
 	}
 	inStream.close();
@@ -190,9 +190,8 @@ void Registrar::run(std::string str)
 	readFile(str);
 	
 	int clock = 0;
-	while(line->getSize() > 0 || !allOpen())
+	while(line -> getSize() > 0 || !allOpen())
 	{
-
 		occupyWindow();
 		increaseWait(clock);
 		increaseIdle();
@@ -200,7 +199,7 @@ void Registrar::run(std::string str)
 		emptyWindow();
 	}
 	//do stats stuff
-
+	
 	StatStuff lineStats(waitTimes);
 	StatStuff windowStats(windowTimes);
 	cout<<"Average Student Wait:\t"<<lineStats.calcMean()<<endl;

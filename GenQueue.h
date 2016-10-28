@@ -21,12 +21,11 @@ public:
 
 private:
     DList<T> * list;
-    unsigned int size;
 };
 
 
 template <class T>
-GenQueue<T>::GenQueue() : size(0)
+GenQueue<T>::GenQueue()
 {
     list = new DList<T>();
 }
@@ -38,15 +37,21 @@ GenQueue<T>::~GenQueue()
 }
 
 template <class T>
-void GenQueue<T>::enqueue(const T& d) {list -> addBack(d);}
+void GenQueue<T>::enqueue(const T& d) 
+{
+    list -> addBack(d);
+}
 
 template <class T>
-void GenQueue<T>::dequeue(){list -> removeFront();}
+void GenQueue<T>::dequeue()
+{
+    list -> removeFront();
+}
 
 template <class T>
 const T& GenQueue<T>::peek() const{return list -> front();}
 
 template <class T>
-unsigned int GenQueue<T>::getSize() const{return size;}
+unsigned int GenQueue<T>::getSize() const{return list -> getSize();}
 
 #endif

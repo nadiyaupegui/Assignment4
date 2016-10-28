@@ -16,12 +16,12 @@ StatStuff::StatStuff()
 
 StatStuff::StatStuff(DList<int>* d)
 {
-  size = d->getSize();
+  size = d -> getSize();
   data = new int[size];
-  for(int i = 0; i<size;++i)
+  for(int i = 0; i < size; ++i)
   {
-    data[i]= d->front();
-    d->removeFront();
+    data[i]= d -> front();
+    d -> removeFront();
   }
   sortData();
   mean = -1;
@@ -47,11 +47,11 @@ void StatStuff::sortData()
 
 void StatStuff::setData(DList<int>* d)
 {
-  size = d->getSize();
+  size = d -> getSize();
   data = new int[size];
   for(int i = 0; i<size;++i)
   {
-    data[i]= d->front();
+    data[i]= d->front(); 
     d->removeFront();
   } 
   sortData();
@@ -90,7 +90,7 @@ int StatStuff::getOverVal()
 double StatStuff::calcMean()
 {
   int sum = 0;
-  for(int i = 0; i<size; ++i)
+  for(int i = 0; i < size; ++i)
   {
     sum+=data[i];
   }
