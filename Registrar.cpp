@@ -23,18 +23,23 @@ Registrar::Registrar() : size(-1)
 }
 
 Registrar::~Registrar(){
+	
 	if(line != NULL){
 		delete line;
 	}
+/*
 	if(windows != NULL){
 		delete windows;
 	}
+*/
 	if(waitTimes !=NULL){
 		delete waitTimes;
 	}
+
 	if(windowTimes !=NULL){
 		delete windowTimes;
 	}
+
 }
 
 void Registrar::increaseWait(int c)//goes through the line, increments everyones wait time
@@ -201,7 +206,9 @@ void Registrar::run(std::string str)
 
 	//do stats stuff
 	
+cout<<"student"<<endl;
 	StatStuff lineStats(waitTimes);
+cout<<"window"<<endl;
 	StatStuff windowStats(windowTimes);
 	cout<<"Average Student Wait:\t"<<lineStats.calcMean()<<endl;
 	cout<<"Median Student Wait:\t:"<<lineStats.calcMedian()<<endl;

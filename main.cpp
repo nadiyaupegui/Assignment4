@@ -15,4 +15,5 @@ int main(int argc, char** argv)
   Registrar r;
   
   r.run(fileIn);
+	cout<<"that's all folks"<<endl;
 }

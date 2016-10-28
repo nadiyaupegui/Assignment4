@@ -16,14 +16,7 @@ StatStuff::StatStuff()
 
 StatStuff::StatStuff(DList<int>* d)
 {
-  size = d -> getSize();
-  data = new int[size];
-  for(int i = 0; i < size; ++i)
-  {
-    data[i]= d -> front();
-    d -> removeFront();
-  }
-  sortData();
+  setData(d);
   mean = -1;
   median = -1;
   var = -1;
@@ -51,7 +44,9 @@ void StatStuff::setData(DList<int>* d)
   data = new int[size];
   for(int i = 0; i < size;++i)
   {
-    data[i]= d-> front(); 
+    cout<<d->front();
+    data[i]= d-> front();
+    cout<<data[i]<<endl; 
     d -> removeFront();
   } 
   sortData();
@@ -89,7 +84,7 @@ double StatStuff::calcMean()
   {
     sum+=data[i];
   }
-  mean = sum/size;
+  mean = (double)sum/(double)size;
   return mean;
 }
 
@@ -103,7 +98,7 @@ double StatStuff::calcMedian()
   }
   else
   {
-    median = (data[idx]+data[idx+1])/2;
+    median = (double)(data[idx]+data[idx+1])/(double)2;
   }
   return median;
 }
@@ -115,7 +110,7 @@ double StatStuff::calcVar()
   {
     squaresum += (data[i]-mean)*(data[i]-mean);
   }
-    var = squaresum/(size-1);
+    var = (double)squaresum/(double)(size-1);
     return var;
  }
 
