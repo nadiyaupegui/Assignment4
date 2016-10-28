@@ -39,7 +39,7 @@ void StatStuff::sortData()
 }
 
 void StatStuff::setData(DList<int>* d)
-{
+{//goes through the linked list and puts it into an array and sorts it
   size = d -> getSize();
   data = new int[size];
   for(int i = 0; i < size;++i)
@@ -78,12 +78,14 @@ int StatStuff::getOverVal()
 }
 
 double StatStuff::calcMean()
-{
+{//calculates mean
   int sum = 0;
   for(int i = 0; i < size; ++i)
   {
+    //gets the total sum
     sum+=data[i];
   }
+  //divides it by number of observations
   mean = (double)sum/(double)size;
   return mean;
 }
@@ -94,17 +96,19 @@ double StatStuff::calcMedian()
   idx = (int)(size/2);
   if(size%2 == 1) //if it's odd
   {
+    //it's just the middle number
     median = data[idx];
   }
   else
   {
-    median = (double)(data[idx]+data[idx+1])/(double)2;
+    //if its even take the average of the two midldle numbers
+    median = (double)(data[idx]+data[idx-1])/(double)2;
   }
   return median;
 }
 
 double StatStuff::calcVar()
-{
+{//gets the variance
   double squaresum = 0;
   for(int i = 0; i<size; ++i)
   {
@@ -115,17 +119,20 @@ double StatStuff::calcVar()
  }
 
 double StatStuff::calcMin(){
+//gets the min
   min = data[0];
   return min;
 }
 
 double StatStuff::calcMax()
 {
+  //gets the max
   max = data[size-1];
   return max;
 }
 
 int StatStuff::countOverVal(int val){
+  //gets the number of observations over a value val
   int count = 0;
   for(int i = 0; i<size;++i)
   {
