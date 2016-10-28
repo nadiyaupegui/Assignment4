@@ -87,14 +87,16 @@ void Registrar::setWindow(const unsigned int& n)
     size = n;
 }
 
-bool Registrar::openWindow()
+bool Registrar::openWindow() //says if there exists an open window
 {
+	//if there are no windows return error
     if(size <= 0)
     {
 	cout << "Error Registrar::openWindow(). No windows set." << endl;
 	exit(1);
     }
 
+	//go through each window and see if there is at least one open one
     for (int i = 0; i < size; ++i)
     {
 	if (windows[i].empty())
@@ -103,7 +105,7 @@ bool Registrar::openWindow()
     return false;
 }
 
-bool Registrar::allOpen()
+bool Registrar::allOpen() //says if all windows are open
 {
 	for (int i = 0; i < size; ++i)
 	{
@@ -115,8 +117,10 @@ bool Registrar::allOpen()
 }
 
 void Registrar::occupyWindow(int c){
+	//puts students in al the empty windows
 	for(int i = 0; i < size; ++i)
 	{
+		//checks condition that the window is empty, line has people and the people have arrived
 		if((windows[i].empty()) && (line -> getSize() != 0) && (line -> peek().getArrival() <= c))
 		{
 			windows[i].occupy(line -> peek());
@@ -163,6 +167,7 @@ void Registrar::readFile(std::string str)
 	ifstream inStream;
 	inStream.open(str.c_str());
 	
+	//check for fail
 	if (inStream.fail())
 	{
 		cout << "Error opening file." << endl;
@@ -173,17 +178,22 @@ void Registrar::readFile(std::string str)
 	int n;
 	inStream >> n;
 	setWindow(n);
+	//takes in the first char as the line windows open
 	
 	int time, count, wTime;
 	
 	while (!inStream.eof())
 	{
 		inStream >> time;
+		//next time is arrival time
 		inStream >> count;
+		//next line is the number of students arriving
 		for (int i = 0; i < count; ++i)
 		{
 			inStream >> wTime;
+			//time they need at the window
 			Student temp(0, wTime, time);
+			//make a student
 			line->enqueue(temp);
 		}
 	}
@@ -194,12 +204,18 @@ void Registrar::run(std::string str)
 {
 	readFile(str);
 	int clock = 0;
+	//while loop increments the clock
 	while(line -> getSize() > 0 || !allOpen())
 	{
+		//first check if windows are open and fills them
 		occupyWindow(clock);
+		//increases the wait for anyone still in line
 		increaseWait(clock);
+		//increase idle time for any open windows
 		increaseIdle();
+		//decrease window time for anyone at a window
 		decreaseWindow();
+		//empty windows for anyone who's done
 		emptyWindow();
 		clock++;
 	}
@@ -211,11 +227,12 @@ cout<<"student"<<endl;
 cout<<"window"<<endl;
 	StatStuff windowStats(windowTimes);
 	cout<<"Average Student Wait:\t"<<lineStats.calcMean()<<endl;
-	cout<<"Median Student Wait:\t:"<<lineStats.calcMedian()<<endl;
-	cout<<"Longest Student Wait:\t:"<<lineStats.calcMax()<<endl;
+	cout<<"Median Student Wait:\t"<<lineStats.calcMedian()<<endl;
+	cout<<"Longest Student Wait:\t"<<lineStats.calcMax()<<endl;
 	cout<<"Number of Students Waiting over 10 min:\t"<<lineStats.countOverVal(10)<<endl;
 	cout<<"Mean Window Idle Time:\t"<<windowStats.calcMean()<<endl;
 	cout<<"Longest Window idle time:\t"<<windowStats.calcMax()<<endl;
 	cout<<"Number of Windows idle for over 5 min:\t"<<windowStats.countOverVal(5)<<endl;
+	//and we done
 }
 #endif
