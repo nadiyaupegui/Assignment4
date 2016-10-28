@@ -29,7 +29,7 @@ Registrar::~Registrar(){
 	}
 
 	if(windows != NULL){
-		delete[] windows;
+		delete [] windows;
 	}
 
 	if(waitTimes !=NULL){
@@ -116,13 +116,6 @@ bool Registrar::allOpen() //says if all windows are open
 	return true;
 }
 
-void Registrar::finalIdle()
-{
-	for(int i = 0; i < size; ++i)
-	{
-		windowTimes->addBack(windows[i].getIdle());
-	}
-}
 void Registrar::occupyWindow(int c){
 	//puts students in al the empty windows
 	for(int i = 0; i < size; ++i)
@@ -227,11 +220,14 @@ void Registrar::run(std::string str)
 		clock++;
 	}
 
-	//do stats stuff
-	
-cout<<"student"<<endl;
+        //Adds the window times that were left
+	for (int i = 0; i < size; ++i)
+	{
+		windowTimes -> addBack(windows[i].getIdle());
+	}
+
+	//do stats stuff	
 	StatStuff lineStats(waitTimes);
-cout<<"window"<<endl;
 	StatStuff windowStats(windowTimes);
 	cout<<"Average Student Wait:\t"<<lineStats.calcMean()<<endl;
 	cout<<"Median Student Wait:\t"<<lineStats.calcMedian()<<endl;

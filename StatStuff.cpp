@@ -44,9 +44,7 @@ void StatStuff::setData(DList<int>* d)
   data = new int[size];
   for(int i = 0; i < size;++i)
   {
-    cout<<d->front();
-    data[i]= d-> front();
-    cout<<data[i]<<endl; 
+    data[i]= d-> front(); 
     d -> removeFront();
   } 
   sortData();
