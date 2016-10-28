@@ -47,9 +47,7 @@ void Registrar::increaseWait(int c)//goes through the line, increments everyones
 		if(tempStud.getArrival() > c)
 		//if the arrival time is after the clock time
 		{
-			cout << tempStud.getWait() << endl;
 			tempStud.increaseWait();
-			cout << tempStud.getWait() << endl;
 		}
 		templine -> enqueue(tempStud);
 		line -> dequeue();
