@@ -29,7 +29,7 @@ Registrar::~Registrar(){
 	}
 
 	if(windows != NULL){
-		[]delete windows;
+		delete[] windows;
 	}
 
 	if(waitTimes !=NULL){
@@ -116,6 +116,13 @@ bool Registrar::allOpen() //says if all windows are open
 	return true;
 }
 
+void Registrar::finalIdle()
+{
+	for(int i = 0; i < size; ++i)
+	{
+		windowTimes->addBack(windows[i].getIdle());
+	}
+}
 void Registrar::occupyWindow(int c){
 	//puts students in al the empty windows
 	for(int i = 0; i < size; ++i)
